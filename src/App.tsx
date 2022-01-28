@@ -11,6 +11,11 @@ interface LoginContextInterface {
 
 export const LoginContext = createContext({} as LoginContextInterface);
 
+export const UserContext = createContext({
+  email: "jan@kowalski.pl",
+  isAdmin: false,
+});
+
 function App() {
   const toggleIsLogged = () => {
     setLoginState(currentState => ({ ...currentState, isLogged: !currentState.isLogged }));
