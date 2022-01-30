@@ -1,7 +1,6 @@
 import { ChangeEvent, SyntheticEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { LoginContext } from "../App";
+import { LoginContext } from "../context/loginContext";
 
 const PassphraseForm = () => {
   const [inputValue, setInputValue] = useState("");
@@ -9,7 +8,7 @@ const PassphraseForm = () => {
 
   const navigate = useNavigate();
 
-  const { password, toggleIsLogged } = useContext(LoginContext);
+  const { state: { password }, dispatch } = useContext(LoginContext);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (isError) {
@@ -22,7 +21,7 @@ const PassphraseForm = () => {
     event.preventDefault();
 
     if (inputValue === password) {
-      toggleIsLogged();
+      dispatch({ type: "TOGGLE_IS_LOGGED" });
       navigate("/content");
 
     } else {

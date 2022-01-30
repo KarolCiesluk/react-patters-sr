@@ -1,40 +1,27 @@
-import { createContext, useState } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
-import { Content, PassphraseForm } from "./components";
-
-interface LoginContextInterface {
-  password: string;
-  isLogged: boolean;
-  toggleIsLogged: () => void;
-}
-
-export const LoginContext = createContext({} as LoginContextInterface);
-
-export const UserContext = createContext({
-  email: "jan@kowalski.pl",
-  isAdmin: false,
-});
+import { Content, Movies, PassphraseForm, Places } from "./components";
+import { LoginContextValue } from "./context/loginContext";
+import { UserContext } from "./context/userContext";
 
 function App() {
-  const toggleIsLogged = () => {
-    setLoginState(currentState => ({ ...currentState, isLogged: !currentState.isLogged }));
-  };
-
-  const [loginState, setLoginState] = useState({
-    password: "haslo",
-    isLogged: false,
-    toggleIsLogged,
-  });
-
   return (
     <Router>
-      <LoginContext.Provider value={loginState}>
-        <Routes>
-          <Route index element={<PassphraseForm />} />
-          <Route path="/content" element={<Content />} />
-        </Routes>
-      </LoginContext.Provider>
+      <LoginContextValue>
+        <UserContext.Provider
+          value={{
+            email: "jan@kowalski.pl",
+            isAdmin: false,
+          }}
+        >
+          <Routes>
+            <Route index element={<PassphraseForm />} />
+            <Route path="/content" element={<Content />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/places" element={<Places />} />
+          </Routes>
+        </UserContext.Provider>
+      </LoginContextValue>
     </Router>
   );
 }

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { LoginContext } from "../App";
+import { LoginContext } from "../context/loginContext";
 
 const Content = () => {
-  const { password, isLogged } = useContext(LoginContext);
+  const { state: { password, isLogged } } = useContext(LoginContext);
 
   const checkIsLogged = () => {
     return isLogged ? (
