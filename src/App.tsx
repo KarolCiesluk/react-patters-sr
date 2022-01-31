@@ -1,7 +1,6 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
-import { Content, Menu, Movies, PassphraseForm, Places } from "./components";
-import NavItem from "./components/NavItem";
+import { Content, Menu, Movies, NavItem, PassphraseForm, Places } from "./components";
 import { LoginContextValue } from "./context/loginContext";
 import { UserContext } from "./context/userContext";
 import { toContent, toMovies, toPlaces } from "./routes";
