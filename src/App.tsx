@@ -40,7 +40,6 @@ function App() {
                 <Route path={toPlaces()} element={<Places />} />
               </Routes>
             </UserContext.Provider>
-
           </main>
 
         </LoginContextValue>
