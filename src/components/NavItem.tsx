@@ -40,18 +40,6 @@ interface NavItemProps {
 const NavItem = ({ to, variant = "desktop", label }: NavItemProps) => {
   const { state: { isLogged } } = useContext(LoginContext);
 
-  const checkVariant = () => {
-    if (variant === "desktop") {
-      return <DesktopNavItem label={label} icon={getIcon()} />;
-    }
-
-    if (variant === "mobile") {
-      return <MobileNavItem icon={getIcon()} />;
-    }
-
-    throw new Error("Incorrect variant");
-  }
-
   const getIcon = () => {
     switch (label) {
       case "Content":
@@ -63,6 +51,18 @@ const NavItem = ({ to, variant = "desktop", label }: NavItemProps) => {
       default:
         return <BsDot />;
     }
+  };
+
+  const checkVariant = () => {
+    if (variant === "desktop") {
+      return <DesktopNavItem label={label} icon={getIcon()} />;
+    }
+
+    if (variant === "mobile") {
+      return <MobileNavItem icon={getIcon()} />;
+    }
+
+    throw new Error("Incorrect variant");
   };
 
   const setClassName = ({ isActive }: { isActive: boolean }) => {
