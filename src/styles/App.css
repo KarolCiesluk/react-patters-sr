@@ -1,0 +1,10 @@
+.app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+  min-height: 100vh;
+}
+
+.app_main {
+  margin: 0 5px;
+}

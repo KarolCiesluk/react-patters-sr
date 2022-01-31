@@ -1,0 +1,12 @@
+.navItem {
+  margin: 10px 0;
+}
+
+.navItem-active {
+  color: red;
+}
+
+.navItem-disabled {
+  pointer-events: none;
+  color: gray;
+}
